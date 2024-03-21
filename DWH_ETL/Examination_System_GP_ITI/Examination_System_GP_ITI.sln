@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34407.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Examination_System_GP_ITI", "Examination_System_GP_ITI\Examination_System_GP_ITI.dtproj", "{6A6C5CF7-5B9E-4EAD-B2FA-B4204E1AAE88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A6C5CF7-5B9E-4EAD-B2FA-B4204E1AAE88}.Development|Default.ActiveCfg = Development
+		{6A6C5CF7-5B9E-4EAD-B2FA-B4204E1AAE88}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BD5738B-5D63-4249-B0B0-E2D9011BC499}
+	EndGlobalSection
+EndGlobal

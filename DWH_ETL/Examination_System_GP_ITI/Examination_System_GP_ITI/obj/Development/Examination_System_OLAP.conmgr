@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="35.158.93.227.Examination_System_DWH.Rabea"
+  DTS:DTSID="{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=35.158.93.227;User ID=Rabea;Initial Catalog=Examination_System_DWH;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Examination_System_GP_ITI-{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}35.158.93.227.Examination_System_DWH.Rabea;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA73kduViv7UyX7EfXNXMo0gAAAAACAAAAAAAQZgAAAAEAACAAAAAQr3WbuLF7DcMV7B2w2jaCD+4kIX0wFUo44qYih28wWwAAAAAOgAAAAAIAACAAAACPdvbsmaiuFAlq/WO8srA5q3JIXatOoGRZ6oUnNlNUoXAAAACY2gcrApXNnC/EgC/M8JiQ8wasilVfmjWC+1iAJrzkibmp6z+kqQQJAozRrSVIDD74Yi5eCwhZYt7PZck64YwSjn66hsxaJjrF3cnWX2aOZADFpC0wmJGBXLBG/+WDWcwoomDw/xGp25cz5LjNOKaMQAAAAD43cS6HG0z9onnE8Dxv9dm2UschPNeYyJCbHPSTqeB/ivEz8I+eDQgc8u6f02ziy5EXwVH8zt1B76a+ySiADJ4=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

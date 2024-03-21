@@ -1,0 +1,1465 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2024 4:28:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MRABEA"
+  DTS:CreatorName="MRABEA\Mohammad Rabea"
+  DTS:DTSID="{5B7121AB-4826-443A-8218-DA482C6A09CC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{68C003BD-7F26-4404-BD33-B67A6A61EB1C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dim_Student_ETL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EB0BF893-72E5-4D2F-9C10-8F1AB79E8415}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_Student_ETL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dim_Student_ETL\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dim_Student_ETL\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output].Columns[Source_System]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output].Columns[Source_System]"
+                      name="Source_System"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim_Student_ETL\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Student]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim_Student_ETL\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[35.158.93.227.Examination_System_DWH.Rabea]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[St_Id]"
+                      cachedDataType="i4"
+                      cachedName="St_Id"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Student_ID_bk]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Full_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Full_Name"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Student_Name]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Full_Name]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[birthDate]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[birth_date]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Years_from_Graduation]"
+                      cachedDataType="i4"
+                      cachedName="Years_from_Graduation"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Years_from_Graduation]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[UserName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UserName"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Password]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Password"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PassWord]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Education_Background]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Education_Background"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EducationBackground]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Education_Background]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[ITP]"
+                      cachedDataType="i4"
+                      cachedName="ITP"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITB]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[ITP]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].Columns[Source_System]"
+                      cachedDataType="i4"
+                      cachedName="Source_System"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_System]"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output].Columns[Source_System]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Student_ID_sk]"
+                      dataType="i4"
+                      name="Student_ID_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Student_ID_bk]"
+                      dataType="i4"
+                      name="Student_ID_bk" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Student_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Student_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[birthDate]"
+                      dataType="dbDate"
+                      name="birthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Years_from_Graduation]"
+                      dataType="i4"
+                      name="Years_from_Graduation" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="200"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[UserName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PassWord]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PassWord" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EducationBackground]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EducationBackground" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ITB]"
+                      dataType="i4"
+                      name="ITB" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start_Date]"
+                      dataType="dbTimeStamp"
+                      name="Start_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[End_Date]"
+                      dataType="dbTimeStamp"
+                      name="End_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Is_Current]"
+                      dataType="bool"
+                      name="Is_Current" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_System]"
+                      dataType="i4"
+                      name="Source_System" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim_Student_ETL\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim_Student_ETL\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Student] SET [Location] = ?,[PassWord] = ?,[Source_System] = ?,[UserName] = ?,[Years_from_Graduation] = ? WHERE [Student_ID_bk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim_Student_ETL\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[35.158.93.227.Examination_System_DWH.Rabea]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[Password]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Password"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[Source_System]"
+                      cachedDataType="i4"
+                      cachedName="Source_System"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output].Columns[Source_System]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[St_Id]"
+                      cachedDataType="i4"
+                      cachedName="St_Id"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[UserName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UserName"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]" />
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].Columns[Years_from_Graduation]"
+                      cachedDataType="i4"
+                      cachedName="Years_from_Graduation"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="200"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim_Student_ETL\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [birthDate], [EducationBackground], [Gender], [ITB], [Location], [PassWord], [Source_System], [Student_ID_bk], [Student_Name], [UserName], [Years_from_Graduation] FROM [dbo].[Dim_Student]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[35.158.93.227.Examination_System_DWH.Rabea]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="birth_date"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[birthDate]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[birth_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Education_Background]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Education_Background"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EducationBackground]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Education_Background]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ITP]"
+                      cachedDataType="i4"
+                      cachedName="ITP"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ITB]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[ITP]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Location]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Password]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Password"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PassWord]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Source_System]"
+                      cachedDataType="i4"
+                      cachedName="Source_System"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Source_System]"
+                      lineageId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output].Columns[Source_System]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[St_Id]"
+                      cachedDataType="i4"
+                      cachedName="St_Id"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Student_ID_bk]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Full_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Full_Name"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Student_Name]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Full_Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[UserName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UserName"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UserName]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Years_from_Graduation]"
+                      cachedDataType="i4"
+                      cachedName="Years_from_Graduation"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Years_from_Graduation]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[birthDate]"
+                      dataType="dbDate"
+                      name="birthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[EducationBackground]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EducationBackground" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ITB]"
+                      dataType="i4"
+                      name="ITB" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="200"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PassWord]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PassWord" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Source_System]"
+                      dataType="i4"
+                      name="Source_System" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Student_ID_bk]"
+                      dataType="i4"
+                      name="Student_ID_bk" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Student_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Student_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[UserName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Years_from_Graduation]"
+                      dataType="i4"
+                      name="Years_from_Graduation" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dim_Student_ETL\T_SQL_Dim_Student"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="T_SQL_Dim_Student"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT St_Id, Full_Name, Gender, UserName, Password, Location, Education_Background, Years_from_Graduation, birth_date, ITP
+FROM     instructor.Student</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Connections[OleDbConnection]"
+                  connectionManagerID="{752876A1-46FB-4B99-ACB5-B4B04FD0C228}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[35.158.93.227.GradProj_Minia_Intake2023Q3_G3.Rabea]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[St_Id]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]"
+                      name="St_Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Full_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Full_Name]"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Full_Name]"
+                      name="Full_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]"
+                      name="UserName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Password]"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]"
+                      name="Password"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="200"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Education_Background]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Education_Background]"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Education_Background]"
+                      name="Education_Background"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Years_from_Graduation]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]"
+                      name="Years_from_Graduation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      name="birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[ITP]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[ITP]"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[ITP]"
+                      name="ITP"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[St_Id]"
+                      dataType="i4"
+                      name="St_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Full_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Full_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[UserName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UserName" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Password]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Password" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="200"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Education_Background]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Education_Background" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[Years_from_Graduation]"
+                      dataType="i4"
+                      name="Years_from_Graduation" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      dataType="dbDate"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output].ExternalColumns[ITP]"
+                      dataType="i4"
+                      name="ITP" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[St_Id]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[St_Id]"
+                      name="St_Id" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Full_Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Full_Name]"
+                      name="Full_Name" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[UserName]"
+                      name="UserName" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Password]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Password]"
+                      name="Password" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Education_Background]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Education_Background]"
+                      name="Education_Background" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Years_from_Graduation]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[Years_from_Graduation]"
+                      name="Years_from_Graduation" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      dataType="dbDate"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      name="birth_date" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ITP]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ITP]"
+                      name="ITP" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dim_Student_ETL.Paths[Changing Attribute Updates Output]"
+              endId="Package\Dim_Student_ETL\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\Dim_Student_ETL.Paths[Derived Column Output]"
+              endId="Package\Dim_Student_ETL\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\Dim_Student_ETL\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Dim_Student_ETL.Paths[New Output]"
+              endId="Package\Dim_Student_ETL\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\Dim_Student_ETL\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Dim_Student_ETL.Paths[OLE DB Source Output]"
+              endId="Package\Dim_Student_ETL\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dim_Student_ETL\T_SQL_Dim_Student.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dim_Student_ETL"
+          TopLeft="356.928577413364,65.1470596600568" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dim_Student_ETL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Dim_Student_ETL\T_SQL_Dim_Student"
+          TopLeft="222.7,5.49999999999995" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Dim_Student_ETL\Slowly Changing Dimension"
+          TopLeft="205.2714285471,155.170587484564" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Dim_Student_ETL\Derived Column"
+          TopLeft="235.01428572645,76.5117642768938" />
+        <EdgeLayout
+          Id="Package\Dim_Student_ETL.Paths[OLE DB Source Output]"
+          TopLeft="311.057142863225,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.4117642768938"
+              Start="0,0"
+              End="0,21.9117642768938">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.9117642768938" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dim_Student_ETL.Paths[Derived Column Output]"
+          TopLeft="310.342857136775,118.111764276894">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.0588232076704"
+              Start="0,0"
+              End="0,29.5588232076704">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5588232076704" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dim_Student_ETL\Insert Destination"
+          TopLeft="36.214286237347,233.064704799157" />
+        <EdgeLayout
+          Id="Package\Dim_Student_ETL.Paths[New Output]"
+          TopLeft="275.938095213767,196.770587484564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-158.52380897642,36.2941173145928"
+              Start="0,0"
+              End="-158.52380897642,28.7941173145928">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.6838795242245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.6838795242245"
+                    Point2="0,14.6838795242245"
+                    Point3="-4,14.6838795242245" />
+                  <mssgle:LineSegment
+                    End="-154.52380897642,14.6838795242245" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-154.52380897642,14.6838795242245"
+                    Point2="-158.52380897642,14.6838795242245"
+                    Point3="-158.52380897642,18.6838795242246" />
+                  <mssgle:LineSegment
+                    End="-158.52380897642,28.7941173145928" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-106.35329120696,19.6838795242246,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Dim_Student_ETL\OLE DB Command"
+          TopLeft="416.871431782781,237.652940157623" />
+        <EdgeLayout
+          Id="Package\Dim_Student_ETL.Paths[Changing Attribute Updates Output]"
+          TopLeft="342.604761880434,196.770587484564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156.666669902347,40.8823526730587"
+              Start="0,0"
+              End="156.666669902347,33.3823526730587">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5401884860467" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5401884860467"
+                    Point2="0,16.5401884860467"
+                    Point3="4,16.5401884860467" />
+                  <mssgle:LineSegment
+                    End="152.666669902347,16.5401884860467" />
+                  <mssgle:CubicBezierSegment
+                    Point1="152.666669902347,16.5401884860467"
+                    Point2="156.666669902347,16.5401884860467"
+                    Point3="156.666669902347,20.5401884860467" />
+                  <mssgle:LineSegment
+                    End="156.666669902347,33.3823526730587" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.2005714691253,19.3744946972542,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Student_ETL\T_SQL_Dim_Student">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Student_ETL\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{A08BBABB-07B5-4979-BF95-5EDD83BCCFDE}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Student]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[birth_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;birthDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Education_Background]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;EducationBackground&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Gender]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Gender&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[ITP]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ITB&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Location]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Location&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Password]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PassWord&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Derived Column.Outputs[Derived Column Output].Columns[Source_System]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Source_System&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[St_Id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Student_ID_bk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Full_Name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Student_Name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[UserName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;UserName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;T_SQL_Dim_Student.Outputs[OLE DB Source Output].Columns[Years_from_Graduation]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Years_from_Graduation&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

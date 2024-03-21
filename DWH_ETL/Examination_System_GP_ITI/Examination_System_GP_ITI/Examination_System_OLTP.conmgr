@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="35.158.93.227.GradProj_Minia_Intake2023Q3_G3.Rabea"
+  DTS:DTSID="{752876A1-46FB-4B99-ACB5-B4B04FD0C228}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=35.158.93.227;User ID=Rabea;Initial Catalog=GradProj_Minia_Intake2023Q3_G3;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Examination_System_GP_ITI-{752876A1-46FB-4B99-ACB5-B4B04FD0C228}35.158.93.227.GradProj_Minia_Intake2023Q3_G3.Rabea;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA73kduViv7UyX7EfXNXMo0gAAAAACAAAAAAAQZgAAAAEAACAAAADQhwD+s90Xq8aJQAGmlNqkIARnK3DwN0pAuKQLB6srJgAAAAAOgAAAAAIAACAAAACcTWZnkXAGz3gI1Yc79KROnIa9zv0y7DN2CHYkcdYgQHAAAAC98Y7ZTizkTrjzl9jL/JCtXwOOTG8nJ2CkV2CZHKyLb4acBXvbG2ogn6teLNXV0Nc7jELb5XJL15BqdGtdvHZ1vIE68Qc70CGGLrcTz7SNj+MvuLyPoTT4J7R4LPjUjIeYSNTB6NTX63zTIXSEH6TZQAAAAB2Tu2ymzD4pMTFysV732j5U7L5FuPnviephdM7O+CJEEFDoTIYwlfGiW/6ABie6b9rqZpp24QwTyl7tg55wLF8=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
